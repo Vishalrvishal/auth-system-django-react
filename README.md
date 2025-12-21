@@ -1,130 +1,99 @@
-🔐 Authentication System (Django + React)
+Authentication System – Django REST & React
+Project Summary
 
-A full-stack authentication system built using Django REST Framework and React.js, featuring email verification and JWT-based authentication.
+Developed a full-stack authentication system using Django REST Framework and React.js.
+Implemented JWT-based authentication, email verification, and secure user management following industry best practices.
 
-This project demonstrates real-world authentication concepts, backend–frontend integration, and secure user management.
+Key Skills & Technologies
 
-📌 Features
+Python, Django, Django REST Framework, React.js, JavaScript, JWT Authentication, Email Verification, REST APIs, SQLite, Git, GitHub, HTML, CSS
 
-User Registration
+Core Features
 
-Email Verification using Token
+User registration with backend validation
 
-Login with JWT Authentication
+Custom Django User model
 
-Access & Refresh Token mechanism
+Email verification using unique token
 
-Protected API endpoints
+JWT authentication (access & refresh tokens)
 
-React frontend integration
+Login restriction until email verification
 
-Secure password handling
+RESTful API design
 
-🧠 Authentication Flow
+Frontend–backend integration using React
 
-User registers with username, email, and password
+Secure password hashing and authentication
 
-Backend generates a unique verification token
+Authentication Workflow
 
-Verification link is sent to user’s email
+User submits registration details
 
-User verifies email using the token
+Backend generates verification token
 
-Login is allowed only after verification
+Email verification required before login
 
-JWT tokens are issued on successful login
+JWT tokens issued on successful login
 
-🛠 Tech Stack
-Frontend
+Protected routes accessed using access token
 
-HTML
+Technical Implementation
 
-CSS
+Extended Django AbstractUser to add verification logic
 
-JavaScript
+Implemented JWT using SimpleJWT
 
-React.js
+Built REST APIs using Django REST Framework
 
+Connected React frontend to Django backend using fetch/axios
+
+Handled HTTP status codes and authentication errors
+
+API Endpoints
+
+POST /register/ – User registration
+
+GET /verify/<token>/ – Email verification
+
+POST /login/ – JWT login authentication
+
+Project Structure
+backend/   → Django REST APIs
+frontend/  → React.js UI
+
+Setup Instructions
 Backend
-
-Python
-
-Django
-
-Django REST Framework
-
-Authentication
-
-JWT (SimpleJWT)
-
-Email verification token
-
-Database
-
-SQLite (development)
-
-📂 Project Structure
-AUTH_system/
-│
-├── backend/
-│   ├── auth_api/
-│   ├── backend/
-│   ├── manage.py
-│
-├── frontend/
-│   ├── src/
-│   ├── public/
-│
-├── docs/
-│   └── Auth_System_Project_With_Interview_QA.pdf
-│
-├── README.md
-└── .gitignore
-
-▶️ How to Run the Project
-🔹 Backend Setup
-cd backend
 python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
 
-
-Server will start at:
-
-http://127.0.0.1:8000/
-
-🔹 Frontend Setup
-cd frontend
+Frontend
 npm install
 npm run dev
 
+Learning Outcomes
 
-Frontend will run at:
+JWT authentication flow
 
-http://localhost:5173/
+Email verification implementation
 
-🔐 API Endpoints
-Method	  Endpoint	          Description
-POST	    /register/	        Register new user
-GET	      /verify/<token>/	  Verify email
-POST	    /login/	            Login user
+Secure API development
 
+Full-stack project integration
 
-🎯 What I Learned
-Creating a custom Django User model
+Real-world authentication architecture
 
-Implementing email verification logic
+Future Enhancements
 
-Using JWT for stateless authentication
+Password reset via email
 
-Connecting React frontend with Django APIs
-
-Handling authentication errors securely
+Role-based authorization
 
 
-👨‍💻 Author
-Vishal
-Full-Stack Developer (Django + React)
+Author
+
+Vishal – Full-Stack Developer
 
