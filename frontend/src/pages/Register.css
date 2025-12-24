@@ -1,0 +1,65 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.register-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; /* important for mobile */
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+}
+
+.register-box {
+  background: white;
+  width: 100%;
+  max-width: 400px; /* desktop limit */
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.register-box input,
+.register-box button {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  font-size: 16px; /* prevents zoom on iOS */
+  border-radius: 10px;
+  cursor: pointer;
+}
+.register-box button {
+  background: #4f46e5;
+  color: white;
+  border: none;
+  width: 40%;
+  margin-left: 30%;
+  font-weight: 600;
+}
+.register-box button:hover {
+  background: #4338ca;
+}
+
+@media (max-width: 768px) {
+  .register-box {
+    padding: 20px;
+  }
+
+  .register-box h2 {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .register-box {
+    padding: 15px;
+    border-radius: 8px;
+  }
+
+  .register-box h2 {
+    font-size: 20px;
+  }
+}
