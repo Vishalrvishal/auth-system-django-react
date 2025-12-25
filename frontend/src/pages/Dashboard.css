@@ -39,6 +39,19 @@
   box-shadow: 0 15px 30px rgba(0,0,0,0.2);
 }
 
+.dashboard-container button {
+  font-weight: 600;
+  margin-top: 30px;
+  padding: 12px 24px;
+  font-size: 16px;
+  color: white;
+  background-color: red;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
 /* Animations */
 @keyframes fadeIn {
   from { opacity: 0; }

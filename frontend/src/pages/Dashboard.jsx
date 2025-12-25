@@ -1,7 +1,13 @@
 import { motion } from "framer-motion";
 import "./Dashboard.css";
+import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
+  const navigate = useNavigate();
+
+  const navigator = () => {
+    navigate("/login");
+  };
   return (
     <motion.div
       className="dashboard-container"
@@ -33,6 +39,7 @@ function Dashboard() {
           </motion.div>
         ))}
       </div>
+      <button onClick={navigator}>Logout</button>
     </motion.div>
   );
 }

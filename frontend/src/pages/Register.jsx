@@ -9,22 +9,39 @@ function Register() {
     email: "",
     password: "",
   });
+
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("SUBMIT CLICKED");
+    if (loading) return;
+
+    setLoading(true);
+    setError("");
 
     try {
       const res = await API.post("register/", form);
-      alert(res.data.message);
+      alert(res.data.message || "Registration successful");
       navigate("/login");
     } catch (err) {
-      console.error(err);
-      alert("Registration failed");
+      if (err.response?.data?.error) {
+        setError(err.response.data.error);
+      } else if (err.response?.data?.email) {
+        setError(err.response.data.email[0]);
+      } else if (err.response?.data?.username) {
+        setError(err.response.data.username[0]);
+      } else {
+        setError("Registration failed");
+      }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -34,17 +51,43 @@ function Register() {
         <h1>Register</h1>
         <br></br>
         <form onSubmit={handleSubmit}>
-          <input name="username" placeholder="Username" onChange={handleChange} />
-          <input name="email" placeholder="Email" onChange={handleChange} />
+          <input
+            name="username"
+            placeholder="Username"
+            value={form.username}
+            onChange={handleChange}
+            required
+          />
+
+          <input
+            name="email"
+            type="email"
+            placeholder="Email"
+            value={form.email}
+            onChange={handleChange}
+            required
+          />
+
           <input
             name="password"
             type="password"
             placeholder="Password"
+            value={form.password}
             onChange={handleChange}
+            required
           />
-          <button type="submit">Register</button>
-          <button onClick={() => navigate("/login")}>Login</button>
+
+          {error && <p className="error">{error}</p>}
+
+          <button type="submit" disabled={loading}>
+            {loading ? "Registering..." : "Register"}
+          </button>
         </form>
+
+        <p className="login-link">
+          Already have an account?{" "}
+          <span onClick={() => navigate("/login")}>Login</span>
+        </p>
       </div>
     </div>
   );

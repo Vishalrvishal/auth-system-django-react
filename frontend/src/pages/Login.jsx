@@ -1,31 +1,49 @@
 import { useState } from "react";
-import API from "../services/api";
 import { useNavigate } from "react-router-dom";
+import API from "../services/api";
 import "./Login.css";
 
 function Login() {
-  const [form, setForm] = useState({ username: "", password: "" });
+  const [form, setForm] = useState({
+    username: "",
+    password: "",
+  });
+
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
 
-  const handleChange = (e) =>
+  const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (loading) return;
+
+    setLoading(true);
     setError("");
 
     try {
       const res = await API.post("login/", form);
+
       localStorage.setItem("access", res.data.access);
       localStorage.setItem("refresh", res.data.refresh);
+
       navigate("/dashboard");
     } catch (err) {
       if (err.response?.data?.error) {
         setError(err.response.data.error);
-      } else {
+      } else if (err.response?.status === 401) {
         setError("Invalid username or password");
+      } else if (err.response?.status === 403) {
+        setError("Email not verified. Please verify your email.");
+      } else {
+        setError("Login failed. Please try again.");
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -34,11 +52,11 @@ function Login() {
       <div className="login-box">
         <h1>Login</h1>
         <br></br>
-
         <form onSubmit={handleSubmit}>
           <input
             name="username"
             placeholder="Username"
+            value={form.username}
             onChange={handleChange}
             required
           />
@@ -47,14 +65,21 @@ function Login() {
             name="password"
             type="password"
             placeholder="Password"
+            value={form.password}
             onChange={handleChange}
             required
           />
-          {error && <h3 className="error">{error}</h3>}
 
-          <button type="submit">Login</button>
-          <button onClick={() => navigate("/register")}>Register</button>
+          {error && <p className="error">{error}</p>}
+          <button type="submit" disabled={loading}>
+            {loading ? "Logging in..." : "Login"}
+          </button>
         </form>
+
+        <p className="register-link">
+          Don’t have an account?{" "}
+          <span onClick={() => navigate("/")}>Register</span>
+        </p>
       </div>
     </div>
   );

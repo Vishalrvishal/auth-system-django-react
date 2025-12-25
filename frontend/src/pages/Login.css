@@ -1,5 +1,6 @@
 /* Page container */
 .login-container {
+  text-align: center;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -38,7 +39,6 @@
 /* Button */
 .login-box button {
   width: 40%;
-  margin-left: 30%;
   font-weight: 600;
   padding: 12px;
   font-size: 16px;
@@ -53,7 +53,12 @@
 .login-box button:hover {
   background: #4338ca;
 }
-
+.register-link span{
+  margin-top: 15px;
+  font-size: 14px;
+  color: blue;
+  cursor: pointer;
+}
 /* Error message */
 .error {
   color: red;
