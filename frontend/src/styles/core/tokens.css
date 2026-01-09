@@ -1,0 +1,25 @@
+:root {
+  /* Military Palette */
+  --bg-main: #0b1220;
+  --bg-panel: #111827;
+  --bg-elevated: #1f2937;
+
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+
+  --accent: #38bdf8;
+  --success: #22c55e;
+  --warning: #facc15;
+  --danger: #ef4444;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+
+  --shadow-sm: 0 4px 12px rgba(0,0,0,.35);
+  --shadow-lg: 0 20px 40px rgba(0,0,0,.6);
+
+  --speed-fast: .2s;
+  --speed-med: .4s;
+}

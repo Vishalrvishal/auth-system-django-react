@@ -1,0 +1,16 @@
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(2,6,23,.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-box {
+  background: var(--bg-panel);
+  padding: 26px;
+  border-radius: var(--radius-lg);
+  width: 420px;
+  box-shadow: var(--shadow-lg);
+}

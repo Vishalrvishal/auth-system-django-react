@@ -5,6 +5,24 @@ import Verify from "./pages/Verify";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 
+import "./styles/core/reset.css";
+import "./styles/core/tokens.css";
+import "./styles/core/typography.css";
+
+import "./styles/layout/shell.css";
+import "./styles/layout/grid.css";
+
+import "./styles/components/cards.css";
+import "./styles/components/filters.css";
+import "./styles/components/modal.css";
+import "./styles/components/buttons.css";
+
+import "./styles/animations/motion.css";
+import "./styles/responsive/breakpoints.css";
+import "./styles/global.css";
+
+
+
 function App() {
   return (
     <Routes>

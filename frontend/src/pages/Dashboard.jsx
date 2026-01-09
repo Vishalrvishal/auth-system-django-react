@@ -1,47 +1,39 @@
-import { motion } from "framer-motion";
-import "./Dashboard.css";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import DashboardFilters from "../components/filters/DashboardFilters";
+import MetricCard from "../components/cards/MetricCard";
+import NetMovementModal from "../components/modals/NetMovementModal";
 
-function Dashboard() {
-  const navigate = useNavigate();
+const Dashboard = () => {
+  const [filters, setFilters] = useState({});
+  const [showNetModal, setShowNetModal] = useState(false);
 
-  const navigator = () => {
-    navigate("/login");
-  };
   return (
-    <motion.div
-      className="dashboard-container"
-      initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-    >
-      <motion.h1
-        className="dashboard-title"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2 }}
-      >
-        Dashboard
-      </motion.h1>
+    <div className="dashboard">
+      <h1 className="dashboard-title">Asset Dashboard</h1>
 
-      <div className="dashboard-cards">
-        {["Profile", "Security", "Settings"].map((item, index) => (
-          <motion.div
-            key={item}
-            className="dashboard-card"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 + index * 0.2 }}
-            whileHover={{ scale: 1.05 }}
-          >
-            <h3>{item}</h3>
-            <p>Manage your {item.toLowerCase()}</p>
-          </motion.div>
-        ))}
+      <DashboardFilters onChange={setFilters} />
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+        <MetricCard title="Opening Balance" value={1200} />
+        <MetricCard title="Closing Balance" value={1350} />
+
+        <MetricCard
+          title="Net Movement"
+          value="+150"
+          clickable
+          onClick={() => setShowNetModal(true)}
+        />
+
+        <MetricCard title="Purchases" value={300} />
+        <MetricCard title="Assigned" value={90} />
+        <MetricCard title="Expended" value={60} />
       </div>
-      <button onClick={navigator}>Logout</button>
-    </motion.div>
+
+      {showNetModal && (
+        <NetMovementModal onClose={() => setShowNetModal(false)} />
+      )}
+    </div>
   );
-}
+};
 
 export default Dashboard;

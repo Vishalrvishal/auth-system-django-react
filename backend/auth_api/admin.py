@@ -1,16 +1,20 @@
 from django.contrib import admin
 from .models import User
 
+
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
     list_display = (
         "username",
         "email",
+        "role",
         "is_verified",
         "verification_link",
         "is_staff",
     )
 
+    list_filter = ("role", "is_verified", "is_staff")
+    search_fields = ("username", "email")
     readonly_fields = ("verification_link",)
 
     def verification_link(self, obj):

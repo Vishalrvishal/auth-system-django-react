@@ -1,0 +1,9 @@
+@media (max-width: 768px) {
+  .dashboard-shell {
+    padding: 18px;
+  }
+
+  .filters-bar {
+    flex-direction: column;
+  }
+}

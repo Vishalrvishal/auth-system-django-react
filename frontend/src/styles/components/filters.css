@@ -1,0 +1,20 @@
+.filters-bar {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.filters-bar select,
+.filters-bar input {
+  background: var(--bg-elevated);
+  border: 1px solid #1e293b;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+}
+
+.filters-bar select:focus,
+.filters-bar input:focus {
+  outline: none;
+  border-color: var(--accent);
+}

@@ -1,0 +1,9 @@
+.dashboard-shell {
+  padding: 28px;
+  min-height: 100vh;
+  background: linear-gradient(
+    180deg,
+    #0b1220 0%,
+    #020617 100%
+  );
+}
